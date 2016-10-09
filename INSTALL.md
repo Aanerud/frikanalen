@@ -51,3 +51,25 @@ If you want to use docker, the following commands should set you up:
 Alternatively you can pull down a image from Docker Hub:
 
     $ docker run -p 8000:8000 frikanalen/frikanalen
+   
+Adding a super user in Pyton
+
+    $ docker ps -a
+
+Grabbing process ID 
+
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS                        PORTS                    NAMES
+246237e83e21        frikanalen          "python manage.py run"   2 minutes ago       Up 2 minutes                  0.0.0.0:8000->8000/tcp   loving_poincare
+
+Grabb "246237e83e21" and use in following command
+
+   $ sudo docker exec -i -t 246237e83e21 /bin/bash
+   
+Then you shuld see " root@****:/srv/frikanalen/fkbeta# " where **** is the ID from pre step. 
+run then command 
+
+   $ python manage.py createsuperuser
+   
+Create youre user 
+
+and log then into : http://localhost:8000/admin/login/?next=/admin/
