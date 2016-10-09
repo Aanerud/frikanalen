@@ -135,7 +135,7 @@ class AbstractVideoFormView(TemplateView):
 
 class ManageVideoNew(AbstractVideoFormView):
   def get(self, request, form=None):
-    if not request.user.is_authenticated() or not request.user.is_superuser:
+    if not request.user.is_authenticated():
       return redirect('/login/?next=%s' % request.path)
     initial = {}
     form = self.get_form(request, initial=initial, form=form)
